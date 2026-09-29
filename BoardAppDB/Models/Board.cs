@@ -147,4 +147,4 @@ namespace BoardAppDB.Models
             return $"Board Code: {BoardCode}, Make: {Make}, Model: {Model}, Flash Size: {FlashKb}KB, Price: R{Price:0.00}";
         } // end method
     } // end class Board
-} // end BoardApp.Models
+} // end BoardAppDB.Models
