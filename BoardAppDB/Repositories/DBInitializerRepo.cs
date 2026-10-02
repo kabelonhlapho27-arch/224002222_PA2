@@ -1,5 +1,5 @@
 ﻿// Group leader name : Kabelo Nhlapho
-// Group Student nrs : 220048471; <student nr>; <student nr>
+// Group Student nrs : 224042163; 220048471; 219005935; 224136508; 224069913; 223068452; 224037409
 // Assignment nr     : SOD226C Practical Assessment 2 · 2026
 // Purpose           : The purpose of this class is to implement IDBInitializer using the
 //                     Repository pattern, creating the SQLite database if it does not exist

@@ -1,5 +1,5 @@
 ﻿// Group leader name : Kabelo Nhlapho
-// Group Student nrs : 220048471; 219005935; <student nr>
+// Group Student nrs :  224042163; 220048471; 219005935; 224136508; 224069913; 223068452; 224037409
 // Assignment nr     : SOD226C Practical Assessment 2 Â· 2026
 // Purpose           : The purpose of this class is to act as the controller for the
 //                     home, privacy and error pages of the Board App.
@@ -26,7 +26,7 @@ namespace BoardAppDB.Controllers
             //                    the repository instance used to interact with the database
             //Output Type       : none
 
-            this._boardRepo = boardRepo;
+            _boardRepo = boardRepo;
         } // end Constructor
 
         public IActionResult Index()

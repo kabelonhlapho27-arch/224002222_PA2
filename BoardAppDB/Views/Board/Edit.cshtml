@@ -1,0 +1,62 @@
+@model BoardAppDB.Models.Board
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Board</h1>
+
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="BoardCode" class="control-label"></label>
+        <input asp-for="BoardCode" class="form-control" readonly />
+        <span asp-validation-for="BoardCode" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Make" class="control-label"></label>
+        <input asp-for="Make" class="form-control" />
+        <span asp-validation-for="Make" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Model" class="control-label"></label>
+        <input asp-for="Model" class="form-control" />
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FlashKb" class="control-label"></label>
+        <input asp-for="FlashKb" class="form-control" />
+        <span asp-validation-for="FlashKb" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price" class="control-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @if (ViewBag.ShowSave == null || ViewBag.ShowSave == true)
+        {
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+        }
+        else
+        {
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        }
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,48 @@
+@model IEnumerable<BoardAppDB.Models.Board>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of Boards</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add new board</a>
+</p>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info">No boards found.</div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Board Code</th>
+                <th>Manufacturer</th>
+                <th>Model</th>
+                <th>Flash (KB)</th>
+                <th>Price (R)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BoardCode</td>
+                <td>@item.Make</td>
+                <td>@item.Model</td>
+                <td>@item.FlashKb</td>
+                <td>@(item.Price.HasValue ? string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:N2}", item.Price) : "")</td>
+                <td>
+                    <a asp-action="Details" asp-route-boardCode="@item.BoardCode">Details</a> |
+                    <a asp-action="Edit" asp-route-boardCode="@item.BoardCode">Edit</a> |
+                    <a asp-action="Delete" asp-route-boardCode="@item.BoardCode">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

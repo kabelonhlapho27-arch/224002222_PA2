@@ -1,11 +1,13 @@
 // Group leader name : Kabelo Nhlapo
-// Group Student nrs : 220048471; <student nr>; <student nr>
+// Group Student nrs : 224042163; 220048471; 219005935; 224136508; 224069913; 223068452; 224037409
 // Assignment nr     : SOD226C Practical Assessment 2 · 2026
 // Purpose           : The purpose of this file is to serve as the application entry point,
 //                     registering the required services (MVC and the BoardContext database
 //                     context) and configuring the HTTP request pipeline and routing.
 
 using BoardAppDB.Data;
+using BoardAppDB.Interfaces;
+using BoardAppDB.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 // Create the web application builder
@@ -18,8 +20,19 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BoardContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Dependency Injection registration mapping blocks
+builder.Services.AddScoped<IDBInitializer, DBInitializerRepo>();
+builder.Services.AddScoped<IBoard, BoardRepo>();
+
 // Build the application
 var app = builder.Build();
+
+//Invoke database creation and seeding lifecycle scope sequences at startup
+using (var scope = app.Services.CreateScope())
+{
+    var initializer = scope.ServiceProvider.GetRequiredService<IDBInitializer>();
+    initializer.Initialize();
+}
 
 // Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
